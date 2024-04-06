@@ -1,0 +1,47 @@
+body {
+    background-image: url('imagejpg.jpg');
+    background-size: cover;
+}
+
+h1 {
+    text-align: center;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 10px solid;
+    border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1;
+    border-radius: 50%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+}
+
+@font-face {
+    font-family: 'MiFuentePersonalizada';
+    src: url('C:\Users\Usuario\Desktop\Nueva carpeta\proyecto ia\proyectos html\tictactoegpt\SquishyBlue.ttf');
+  }
+  
+  body {
+    font-family: 'SquishyBlue', sans-serif;
+  }
+  
+  .cuadro {
+    background-color: #f1f1f1;
+  }
+  
