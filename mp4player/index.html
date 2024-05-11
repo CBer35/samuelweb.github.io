@@ -7,33 +7,55 @@
 </head>
 <body>
     <button onclick="playPause()">Reproducir/Pausar</button>
+    <button onclick="skip(-10)">Retroceder 10 segundos</button>
+    <button onclick="skip(10)">Adelantar 10 segundos</button>
     <button onclick="reload()">Recargar</button>
     <button onclick="makeLarge()">Maximizar</button>
     <button onclick="makeSmall()">Minimizar</button>
     <button onclick="makeNormal()">Normal</button>
     <br><br>
     <video id="videoPlayer" width="500">
-        <source src="https://huggingface.co/spaces/CBer35/hostfiles/resolve/main/Johnny.english.strikes.again.2018.1080p-dual-lat-ci.to.mp4?download=true" type="video/mp4">
+        <source src="videos/video.mp4" type="video/mp4">
         Tu navegador no soporta el vídeo de HTML5
     </video>
+    <br>
+    <input type="range" id="seekBar" value="0" step="0.01" style="width: 500px;">
     <script>
         var video = document.getElementById("videoPlayer");
+        var seekBar = document.getElementById("seekBar");
+
         function playPause() {
             if (video.paused) video.play();
             else video.pause();
         }
+
+        function skip(seconds) {
+            video.currentTime += seconds;
+        }
+
         function reload() {
             video.load();
         }
+
         function makeLarge() {
             video.width = 1000;
         }
+
         function makeSmall() {
             video.width = 250;
         }
+
         function makeNormal() {
             video.width = 500;
         }
+
+        video.addEventListener("timeupdate", function() {
+            seekBar.value = video.currentTime / video.duration * 100;
+        });
+
+        seekBar.addEventListener("input", function() {
+            video.currentTime = (seekBar.value / 100) * video.duration;
+        });
     </script>
 </body>
 </html>
