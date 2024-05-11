@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Storage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        label.upload-btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .video-player {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Video Storage</h1>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <label for="file" class="upload-btn">Choose Video</label>
+            <input type="file" name="file" id="file" accept="video/*">
+            <button type="submit">Upload</button>
+        </form>
+        
+        <hr>
+        
+        <h2>Uploaded Videos</h2>
+        <ul id="video-list">
+            <!-- List of uploaded videos will appear here -->
+        </ul>
+        
+        <hr>
+        
+        <h2>Watch Video</h2>
+        <div class="video-player" id="video-player">
+            <!-- Video player will appear here -->
+        </div>
+    </div>
+    
+    <script>
+        // Function to display uploaded videos
+        function displayVideos() {
+            const videoList = document.getElementById('video-list');
+            videoList.innerHTML = ''; // Clear previous list
+            
+            // Loop through uploaded files and create video elements
+            Array.from(document.getElementById('file').files).forEach(file => {
+                if (file.type.startsWith('video/')) {
+                    const videoURL = URL.createObjectURL(file);
+                    const videoItem = document.createElement('li');
+                    const video = document.createElement('video');
+                    video.controls = true;
+                    video.src = videoURL;
+                    videoItem.appendChild(video);
+                    videoList.appendChild(videoItem);
+                }
+            });
+        }
+        
+        // Function to display selected video in the player
+        function displaySelectedVideo(event) {
+            const selectedVideo = event.target.closest('video');
+            const videoPlayer = document.getElementById('video-player');
+            videoPlayer.innerHTML = ''; // Clear previous video
+            
+            if (selectedVideo) {
+                const videoURL = selectedVideo.src;
+                const video = document.createElement('video');
+                video.controls = true;
+                video.src = videoURL;
+                videoPlayer.appendChild(video);
+            }
+        }
+        
+        // Attach event listeners
+        document.getElementById('file').addEventListener('change', displayVideos);
+        document.getElementById('video-list').addEventListener('click', displaySelectedVideo);
+    </script>
+</body>
+</html>
