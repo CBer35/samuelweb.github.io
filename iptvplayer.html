@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reproductor M3U</title>
+    <title>Reproductor M3U con Video.js</title>
+    <!-- Agrega el enlace al archivo CSS de Video.js -->
+    <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet">
 </head>
 <body>
     <!-- Aquí insertaremos el reproductor -->
-	<video id="video" controls>
-    <source src="https://iptv-org.github.io/iptv/index.m3u" type="application/x-mpegURL">
-    <!-- Puedes agregar más fuentes aquí si es necesario -->
-</video>
+    <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360">
+        <!-- Agrega la fuente del archivo M3U -->
+        <source src="./index.m3u" type="application/x-mpegURL">
+        Tu navegador no admite la reproducción de este video.
+    </video>
+
+    <!-- Agrega el enlace al archivo JavaScript de Video.js -->
+    <script src="https://vjs.zencdn.net/7.15.4/video.js"></script>
+    <script>
+        // Inicializa el reproductor
+        var player = videojs('my-video');
+    </script>
 </body>
 </html>
