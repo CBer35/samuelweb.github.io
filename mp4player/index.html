@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Video Personalizado</title>
+</head>
+<body>
+    <button onclick="playPause()">Reproducir/Pausar</button>
+    <button onclick="reload()">Recargar</button>
+    <button onclick="makeLarge()">Maximizar</button>
+    <button onclick="makeSmall()">Minimizar</button>
+    <button onclick="makeNormal()">Normal</button>
+    <br><br>
+    <video id="videoPlayer" width="500">
+        <source src="https://huggingface.co/spaces/CBer35/hostfiles/resolve/main/Johnny.english.strikes.again.2018.1080p-dual-lat-ci.to.mp4?download=true" type="video/mp4">
+        Tu navegador no soporta el vídeo de HTML5
+    </video>
+    <script>
+        var video = document.getElementById("videoPlayer");
+        function playPause() {
+            if (video.paused) video.play();
+            else video.pause();
+        }
+        function reload() {
+            video.load();
+        }
+        function makeLarge() {
+            video.width = 1000;
+        }
+        function makeSmall() {
+            video.width = 250;
+        }
+        function makeNormal() {
+            video.width = 500;
+        }
+    </script>
+</body>
+</html>
