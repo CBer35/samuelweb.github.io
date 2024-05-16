@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zootopia</title>
+</head>
+<body>
+    <button onclick="playPause()">Reproducir/Pausar</button>
+    <button onclick="skip(-10)">Retroceder 10 segundos</button>
+    <button onclick="skip(10)">Adelantar 10 segundos</button>
+    <button onclick="reload()">Recargar</button>
+    <button onclick="makeLarge()">Maximizar</button>
+    <button onclick="makeSmall()">Minimizar</button>
+    <button onclick="makeNormal()">Normal</button>
+    <button onclick="toggleFullScreen()">Pantalla completa</button>
+    <br><br>
+    <video id="videoPlayer" width="500">
+        <source src="https://huggingface.co/spaces/CBer35/hostfiles/resolve/main/Simon%20(2023)%201080p.mp4?download=true" type="video/mp4">
+        Tu navegador no soporta el vídeo de HTML5
+    </video>
+    <br>
+    <input type="range" id="seekBar" value="0" step="0.01" style="width: 500px;">
+    <script>
+        var video = document.getElementById("videoPlayer");
+        var seekBar = document.getElementById("seekBar");
+
+        function playPause() {
+            if (video.paused) video.play();
+            else video.pause();
+        }
+
+        function skip(seconds) {
+            video.currentTime += seconds;
+        }
+
+        function reload() {
+            video.load();
+        }
+
+        function makeLarge() {
+            video.width = 1000;
+        }
+
+        function makeSmall() {
+            video.width = 250;
+        }
+
+        function makeNormal() {
+            video.width = 500;
+        }
+
+        function toggleFullScreen() {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) { // Firefox
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { // IE/Edge
+                video.msRequestFullscreen();
+            }
+        }
+
+        video.addEventListener("timeupdate", function() {
+            seekBar.value = video.currentTime / video.duration * 100;
+        });
+
+        seekBar.addEventListener("input", function() {
+            video.currentTime = (seekBar.value / 100) * video.duration;
+        });
+    </script>
+<h1> Pelicula Gratis para ustedes por mi vale, brindenme algo por esto vale</h1>
+</body>
+</html>
