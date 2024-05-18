@@ -1,0 +1,62 @@
+<!--(c) adarsh-goel-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta property="og:image" content="https://i.ibb.co/M8S0Zzj/live-streaming.png" itemprop="thumbnailUrl">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Biología N°1 Purificacion de agua con tunas</title>
+    <link rel="stylesheet" type='text/css' href="https://adarsh-goel.github.io/resources/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css"/>
+
+</head>
+
+<body>
+    <header>
+        <div class="toogle"></div>
+        <div id="file-name">
+           <marquee direction = "left"> Purificacion De Agua Con Tunas </marquee>
+        </div>
+    </header>
+
+    <div class="container">
+        <video src="http://filezlink-bot-78a28507d2a0.herokuapp.com/AgADxw1140021" class="player"></video>
+    </div>
+    
+    
+    
+    <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
+	<script>
+        const controls = [
+              'play-large',
+              'rewind',
+              'play', 
+              'fast-forward', 
+              'progress', 
+              'current-time',
+              'duration',
+              'mute',
+              'volume',
+              'captions',
+              'settings',
+              'pip',
+              'airplay',
+              'download',
+              'fullscreen'
+            ];
+        document.addEventListener('DOMContentLoaded', () => {
+            const player = Plyr.setup('.player', { controls });
+        });
+
+        const body = document.querySelector('body');
+        const footer = document.querySelector('footer');
+        const toogle = document.querySelector('.toogle');
+        toogle.onclick = () => {
+            body.classList.toggle('dark')
+            footer.classList.toggle('dark')
+        }
+    </script>
+</body>
